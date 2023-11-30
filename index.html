@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Randomly Moving Element</title>
+  <style>
+    #movableElement {
+      width: 50px;
+      height: 50px;
+      background-color: blue;
+      position: absolute;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div id="movableElement"></div>
+
+<script>
+  const movableElement = document.getElementById('movableElement');
+
+  movableElement.addEventListener('mouseover', () => {
+    // Generate a random number between 0 and 1
+    const randomNumber = Math.random();
+
+    // Adjust the probability of movement (e.g., 80% chance to move)
+    const moveProbability = 0.8;
+
+    if (randomNumber < moveProbability) {
+      moveElementRandomly();
+    }
+  });
+
+  function moveElementRandomly() {
+    // Calculate new random positions
+    const newX = Math.random() * (window.innerWidth - movableElement.offsetWidth);
+    const newY = Math.random() * (window.innerHeight - movableElement.offsetHeight);
+
+    // Apply the new positions
+    movableElement.style.left = `${newX}px`;
+    movableElement.style.top = `${newY}px`;
+  }
+</script>
+
+</body>
+</html>
